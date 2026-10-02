@@ -36,6 +36,8 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": os.environ.get("SQLITE_PATH", str(BASE_DIR / "db.sqlite3")),
         "OPTIONS": {"timeout": 20},
+        # 使用文件型测试库，使并发占用测试在多连接间共享同一数据库
+        "TEST": {"NAME": os.environ.get("SQLITE_TEST_PATH", str(BASE_DIR / "test_db.sqlite3"))},
     }
 }
 AUTH_PASSWORD_VALIDATORS = []
